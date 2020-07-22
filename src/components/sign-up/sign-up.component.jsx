@@ -58,6 +58,7 @@ const SignUp = (props) => {
           value={signUp.displayName}
           onChange={handleChange}
           label='Display Name'
+          required
         />
         <FormInput
           type='email'
@@ -65,6 +66,7 @@ const SignUp = (props) => {
           value={signUp.email}
           onChange={handleChange}
           label='Email'
+          required
         />
         <FormInput
           type='password'
@@ -72,6 +74,7 @@ const SignUp = (props) => {
           value={signUp.password}
           onChange={handleChange}
           label='Password'
+          required
         />
         <FormInput
           type='password'
@@ -79,6 +82,7 @@ const SignUp = (props) => {
           value={signUp.confirmPassword}
           onChange={handleChange}
           label='Confirm Password'
+          required
         />
         <div className='buttons'>
           <CustomButton type='submit'> Sign Up </CustomButton>
