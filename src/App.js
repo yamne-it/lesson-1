@@ -18,10 +18,10 @@ const App = () => {
       //
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot(snapShot => {
+        userRef.onSnapshot((snapShot) => {
           setCurrentUser({
             id: snapShot.id,
-            ...snapShot.data()
+            ...snapShot.data(),
           });
         });
       } else {
@@ -35,8 +35,8 @@ const App = () => {
   }, []);
 
   // useEffect(() => {
-  //   console.log(currentUser)
-  // }, [currentUser])
+  //   console.log(currentUser);
+  // }, [currentUser]);
 
   const appLayout = (
     <div>
