@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import MenuItem from '../menu-item/menu-item.component';
 
 import { selectDirectorySections } from '../../redux/directory/directory.selectors';

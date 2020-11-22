@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 import {
@@ -10,13 +10,8 @@ import {
 import './checkout.styles.scss';
 
 const CheckoutPage = () => {
-  const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
-
-  //   const setUser = useCallback((user) => dispatch(setCurrentUser(user)), [
-  //     dispatch,
-  //   ]);
 
   const checkoutPageLayout = (
     <div className='checkout-page'>
