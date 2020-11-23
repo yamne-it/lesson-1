@@ -1,11 +1,11 @@
 import React from 'react';
-import { Route, useRouteMatch, useHistory } from 'react-router-dom'
+import { Route, useRouteMatch } from 'react-router-dom'
 
 import CollectionPage from '../collection/collection.component'
 import CollectionsOverview from '../../components/collections-overview/collections-overview.component';
 
 const ShopPage = () => {
-  const history = useHistory();
+  // const history = useHistory
   const match = useRouteMatch();
 
   const shopLayout = (
