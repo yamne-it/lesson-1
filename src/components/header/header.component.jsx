@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 // import { connect } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { auth } from '../../firebase/firebase.utils';
@@ -10,38 +10,38 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 
-import './header.styles.scss';
-
+// import './header.styles.scss';
+import { HeaderContainer, LogoContainer, OptionsContainer, OptionLink, OptionDiv } from './header.styles'
 // const Header = ({ currentUser }) => {
 const Header = () => {
   const currentUser = useSelector(selectCurrentUser);
   const hidden = useSelector(selectCartHidden);
 
   const headerLayout = (
-    <div className='header'>
-      <Link className='logo-container' to='/'>
+    <HeaderContainer>
+      <LogoContainer to='/'>
         <Logo className='logo' />
-      </Link>
-      <div className='options'>
-        <Link className='option' to='/shop'>
+      </LogoContainer>
+      <OptionsContainer>
+        <OptionLink to='/shop'>
           SHOP
-        </Link>
-        <Link className='option' to='/shop'>
+        </OptionLink>
+        <OptionLink to='/shop'>
           CONTACT
-        </Link>
+        </OptionLink>
         {currentUser ? (
-          <div className='option' onClick={() => auth.signOut()}>
+          <OptionDiv onClick={() => auth.signOut()}>
             SIGN OUT
-          </div>
+          </OptionDiv>
         ) : (
-          <Link className='option' to='/signin'>
-            SIGN IN
-          </Link>
-        )}
+            <OptionLink to='/signin'>
+              SIGN IN
+            </OptionLink>
+          )}
         <CartIcon />
-      </div>
+      </OptionsContainer>
       {hidden ? null : <CartDropdown />}
-    </div>
+    </HeaderContainer>
   );
 
   return headerLayout;
