@@ -1,8 +1,13 @@
 import React from 'react';
+// import { useSelector } from 'react-redux';
 import { SpinnerContainer, SpinnerOverlay } from './with-spinner.styles'
 
-const WithSpinner = WrapperComponent => {
+// import { selectIsCollectionsLoaded } from '../../redux/shop/shop.selectors';
+
+const WithSpinner = (WrapperComponent) => {
     const Spinner = ({ isLoading, ...otherProps }) => {
+
+        // const isLoading = useSelector(selectIsCollectionsLoaded)
 
         const withSpinnerLayout = isLoading ? (
             <SpinnerOverlay>
