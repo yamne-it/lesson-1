@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import { useDispatch } from 'react-redux' 
 
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
+import { signUpStart } from '../../redux/user/user.actions'
+
+// import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 
 import './sign-up.styles.scss';
 
@@ -15,6 +18,11 @@ const SignUp = (props) => {
     confirmPassword: '',
   });
 
+  const dispatch = useDispatch()
+  const exectuteSignUpStart = useCallback((userDetails) => dispatch(signUpStart(userDetails)), [ 
+    dispatch,
+  ])
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -24,22 +32,22 @@ const SignUp = (props) => {
       alert(`Passwords don't match`);
       return;
     }
-
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-      await createUserProfileDocument(user, { displayName });
-      setSignUp({
-        displayName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-      });
-    } catch (err) {
-      console.error(err);
-    }
+    exectuteSignUpStart({ displayName, email, password })
+    // try {
+      // const { user } = await auth.createUserWithEmailAndPassword(
+      //   email,
+      //   password
+      // );
+      // await createUserProfileDocument(user, { displayName });
+      // setSignUp({
+      //   displayName: '',
+      //   email: '',
+      //   password: '',
+      //   confirmPassword: '',
+      // });
+    // } catch (err) {
+    //   console.error(err);
+    // }
   };
 
   const handleChange = (e) => {

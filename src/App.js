@@ -9,8 +9,8 @@ import ShopPage from './pages/shop/shop.component';
 import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import CheckoutPage from './pages/checkout/checkout.component';
 import Header from './components/header/header.component';
-import { auth, createUserProfileDocument, /*addCollectionAndItems*/ } from './firebase/firebase.utils';
-import { setCurrentUser } from './redux/user/user.actions';
+// import { auth, createUserProfileDocument, /*addCollectionAndItems*/ } from './firebase/firebase.utils';
+import { checkUserSession } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 // import { selectCollectionsForPreview } from './redux/shop/shop.selectors';
 
@@ -18,31 +18,33 @@ const App = () => {
   // const [currentUser, setCurrentUser] = useState(null);
   const currentUser = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
-  const setUser = useCallback((user) => dispatch(setCurrentUser(user)), [
+  const executeCheckUserSession = useCallback(() => dispatch(checkUserSession()), [
     dispatch,
   ]);
   // const collectionArray = useSelector(selectCollectionsForPreview);
 
   useEffect(() => {
-    const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-      //
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot((snapShot) => {
-          setUser({
-            id: snapShot.id,
-            ...snapShot.data(),
-          });
-        });
-      } else {
-        setUser(userAuth);
-      }
-    });
+    executeCheckUserSession()
+  //   const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+  //     //
+  //     if (userAuth) {
+  //       const userRef = await createUserProfileDocument(userAuth);
+  //       userRef.onSnapshot((snapShot) => {
+  //         setUser({
+  //           id: snapShot.id,
+  //           ...snapShot.data(),
+  //         });
+  //       });
+  //     } else {
+  //       setUser(userAuth);
+  //     }
+  //   });
 
-    return () => {
-      unsubscribeFromAuth();
-    };
-  }, [setUser]);
+  //   return () => {
+  //     unsubscribeFromAuth();
+  //   };
+    // eslint-disable-next-line
+  }, []);
 
   // useEffect(() => {
   //   console.log(currentUser);

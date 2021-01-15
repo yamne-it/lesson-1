@@ -8,7 +8,8 @@ import CollectionPageContainer from '../collection/collection.container'
 import CollectionsOverviewContainer from '../../components/collections-overview/collections-overview.component'
 // import { firestore, convertCollectionsSnapshotToMap } from '../../firebase/firebase.utils'
 // import { updateCollections } from '../../redux/shop/shop.actions';
-import { fetchCollectionsStartAsync } from '../../redux/shop/shop.actions';
+// import { fetchCollectionsStartAsync } from '../../redux/shop/shop.actions';
+import { fetchCollectionsStart } from '../../redux/shop/shop.actions';
 // import { selectIsCollectionsFetching, selectIsCollectionsLoaded } from '../../redux/shop/shop.selectors';
 
 // import WithSpinner from '../../components/with-spinner/with-spinner.components'
@@ -24,7 +25,7 @@ const ShopPage = () => {
   const dispatch = useDispatch();
   // const isCollectionsLoaded = useSelector(selectIsCollectionsLoaded)
   // const isCollectionsFetching = useSelector(selectIsCollectionsFetching);
-  const fetchCollectionStart = useCallback(() => dispatch(fetchCollectionsStartAsync()), [dispatch]);
+  const fetchCollectionStart = useCallback(() => dispatch(fetchCollectionsStart()), [dispatch]);
   // const updateCollectionsToDB = useCallback((collectionsMap) => dispatch(updateCollections(collectionsMap)), [
   //   dispatch,
   // ]);
