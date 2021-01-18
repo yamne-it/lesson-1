@@ -23,23 +23,9 @@ const ShopPage = () => {
   // const history = useHistory
   const match = useRouteMatch();
   const dispatch = useDispatch();
-  // const isCollectionsLoaded = useSelector(selectIsCollectionsLoaded)
-  // const isCollectionsFetching = useSelector(selectIsCollectionsFetching);
   const fetchCollectionStart = useCallback(() => dispatch(fetchCollectionsStart()), [dispatch]);
-  // const updateCollectionsToDB = useCallback((collectionsMap) => dispatch(updateCollections(collectionsMap)), [
-  //   dispatch,
-  // ]);
-  // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // // const unsubscribeFromSnapshot = null
-    // const collectionRef = firestore.collection('collections')
-
-    // collectionRef.onSnapshot(async snapshot => {
-    //   const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-    //   updateCollectionsToDB(collectionsMap)
-    //   // setLoading(false)
-    // })
     fetchCollectionStart()
     // eslint-disable-next-line
   }, [])

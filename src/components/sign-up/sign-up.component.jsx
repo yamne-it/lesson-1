@@ -33,21 +33,6 @@ const SignUp = (props) => {
       return;
     }
     exectuteSignUpStart({ displayName, email, password })
-    // try {
-      // const { user } = await auth.createUserWithEmailAndPassword(
-      //   email,
-      //   password
-      // );
-      // await createUserProfileDocument(user, { displayName });
-      // setSignUp({
-      //   displayName: '',
-      //   email: '',
-      //   password: '',
-      //   confirmPassword: '',
-      // });
-    // } catch (err) {
-    //   console.error(err);
-    // }
   };
 
   const handleChange = (e) => {
